@@ -16,6 +16,7 @@ def close_connection(exception):
 @app.route("/")
 def index():
     tasklist = db_get_tasks()
+    print(tasklist)
     return render_template('index.html', tasks=tasklist)
 
 @app.route("/create", methods=["POST"])

@@ -22,13 +22,13 @@
   <div id="feed">
     <h2> Tasks </h2>
     {% for task in tasks %}
-    <div class="cheep">userid, title, description, timestamp, deadline, priority, effort, ordinality, complete
-        <b>{{ task.title }}</b>
-        <p>{{ task.description }}</p>
-        <p>{{ task.timestamp }}</p>
-        <p>{{ task.deadline }}</p>
-        <p>{{ task.priority }}</p>
-        <p>{{ task.effort }}</p>
+    <div class="task">
+        <b>{{ task[0] }}</b>
+        <p>{{ task[1] }}</p>
+        <p>{{ task[2] }}</p>
+        <p>{{ task[3] }}</p>
+        <p>{{ task[4] }}</p>
+        <p>{{ task[5] }}</p>
     </div>
     {% endfor %}
   </div>
