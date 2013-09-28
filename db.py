@@ -33,12 +33,6 @@ def db_get_tasks_by_user():
     cur.execute("SELECT * FROM tasks")
     return cur.fetchall()
 
-def db_add_task(task):
-    cur = get_db().cursor()
-    cheep_info = (name, t, cheep)
-    cur.execute("INSERT INTO tasks VALUES (?, ?, ?)", task.get_values())
-    get_db().commit()
-    
 if __name__ == "__main__":
     print("initializing database:", DATABASE)
     conn = sqlite3.connect(DATABASE)

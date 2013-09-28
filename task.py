@@ -7,15 +7,17 @@ class Task:
         ordinality = None 
         pass
         
-    def save_to_db():
+    def save_to_db(self):
         """Save this task to the tasks table"""
-        pass
+        cur = get_db().cursor()
+        # cur.execute("INSERT INTO tasks VALUES (?, ?, ?)", task.get_values())
+        get_db().commit()
         
-    def render():
+    def render(self):
         """Return the HTML rendering of a task with a template"""
         pass
     
-    def get_values():
+    def get_values(self):
         """Return all the values for insertion into databases
         (taskid, userid, title, description, timestamp, deadline, priority, effort, ordinality, complete)
         """

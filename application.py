@@ -21,8 +21,8 @@ def index():
 @app.route("/create", methods=["POST"])
 def receive_create():
     print(request.form)
-    task = Task(request.form['user'], request.form['title'], request.form['description'], request.form['timestamp'], request.form['deadline'], request.form['priority'], request.form['effort'])
-    db_add_task(task)
+    task = Task(request.form['user'], request.form['title'], request.form['description'], request.form['deadline'], request.form['priority'], request.form['effort'])
+    task.save_to_db()
     return "Success! Go back to <a href='/'>Index</a>"
 
 if __name__ == "__main__":
