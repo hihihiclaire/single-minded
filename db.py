@@ -3,6 +3,20 @@ import sqlite3
 
 DATABASE = 'singleminded.db'
 
+def insert(table, fields=(), values=()):
+    db = get_db()
+    cur = db.cursor()
+    query = 'INSERT INTO %s (%s) VALUES (%s)' % (
+        table,
+        ', '.join(fields),
+        ', '.join(['?'] * len(values))
+    )
+    cur.execute(query, values)
+    db.commit()
+    id = cur.lastrowid
+    cur.close()
+    return id
+
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
