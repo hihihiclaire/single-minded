@@ -4,7 +4,7 @@
   </head>
   <body>
   <h1>Single Minded</h1>
-    <form action='/api/cheep' method='POST'>
+    <form action='/create' method='POST'>
       Name:
       <input name="name" type="text" /> 
       Cheep:
@@ -12,7 +12,13 @@
       <input type="submit" />
     </form>
   <div id="feed">
-    
+    <h2> Tasks </h2>
+    {% for task in tasks %}
+    <div class="cheep">
+        <b>{{ task[0] }}</b>
+        <p>{{ task[2] }}</p>
+    </div>
+    {% endfor %}
   </div>
 </body>
 </html>

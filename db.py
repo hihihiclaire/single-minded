@@ -25,14 +25,18 @@ def get_db():
 
 def db_get_tasks():
     cur = get_db().cursor()
-    cur.execute("SELECT * FROM cheeps")
+    cur.execute("SELECT * FROM tasks")
     return cur.fetchall()
 
-def db_add_task(name, cheep):
+def db_get_tasks_by_user():
     cur = get_db().cursor()
-    t = str(time.time())
+    cur.execute("SELECT * FROM tasks")
+    return cur.fetchall()
+
+def db_add_task(task):
+    cur = get_db().cursor()
     cheep_info = (name, t, cheep)
-    cur.execute("INSERT INTO cheeps VALUES (?, ?, ?)", cheep_info)
+    cur.execute("INSERT INTO tasks VALUES (?, ?, ?)", cheep_info)
     get_db().commit()
     
 if __name__ == "__main__":

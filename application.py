@@ -14,13 +14,13 @@ def close_connection(exception):
 
 @app.route("/")
 def index():
-    cheeps = db_read_cheeps()
-    return render_template('index.html', cheeps=cheeps)
+    tasklist = db_get_tasks()
+    return render_template('index.html', tasks=tasklist)
 
-@app.route("/api/cheep", methods=["POST"])
-def receive_cheep():
+@app.route("/create", methods=["POST"])
+def receive_create():
     print(request.form)
-    db_add_cheep(request.form['name'], request.form['cheep'])
+    db_add_task(request.form['name'], request.form['cheep'])
     return "Success! Go back to <a href='/'>Index</a>"
 
 if __name__ == "__main__":
