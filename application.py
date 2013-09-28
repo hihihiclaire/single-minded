@@ -1,6 +1,7 @@
 import sqlite3
 import time
 from db import *
+from task import Task
 from flask import Flask, render_template, request, g
 
 app = Flask(__name__)
@@ -20,7 +21,8 @@ def index():
 @app.route("/create", methods=["POST"])
 def receive_create():
     print(request.form)
-    db_add_task(request.form['name'], request.form['cheep'])
+    task = Task(request.form['user'], request.form['title'], request.form['description'], request.form['timestamp'], request.form['deadline'], request.form['priority'], request.form['effort'])
+    db_add_task(task)
     return "Success! Go back to <a href='/'>Index</a>"
 
 if __name__ == "__main__":

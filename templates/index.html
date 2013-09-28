@@ -5,18 +5,33 @@
   <body>
   <h1>Single Minded</h1>
     <form action='/create' method='POST'>
-      Name:
-      <input name="name" type="text" /> 
-      Cheep:
-      <input name="cheep" type="text" maxlength="76" /> 
+      User:
+      <input name="user" type="text" maxlength="76" /> <br />
+      Title:
+      <input name="title" type="text" maxlength="76" /> <br />
+      Description:
+      <input name="description" type="text" maxlength="76" /> <br />
+      Timestamp:
+      <input name="timestamp" type="text" maxlength="76" /> <br />
+      Deadline:
+      <input name="deadline" type="text" maxlength="76" /> <br />
+      Priority:
+      <input name="priority" type="text" maxlength="76" /> <br />
+      Effort:
+      <input name="effort" type="text" maxlength="76" /> <br />
       <input type="submit" />
     </form>
   <div id="feed">
     <h2> Tasks </h2>
     {% for task in tasks %}
-    <div class="cheep">
-        <b>{{ task[0] }}</b>
-        <p>{{ task[2] }}</p>
+    <div class="cheep">userid, title, description, timestamp, deadline, priority, effort, ordinality, complete
+        <b>{{ task.userid }}</b>
+        <p>{{ task.title }}</p>
+        <p>{{ task.description }}</p>
+        <p>{{ task.timestamp }}</p>
+        <p>{{ task.deadline }}</p>
+        <p>{{ task.priority }}</p>
+        <p>{{ task.effort }}</p>
     </div>
     {% endfor %}
   </div>
