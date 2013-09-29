@@ -28,9 +28,9 @@ def db_get_tasks():
     cur.execute("SELECT * FROM tasks")
     return cur.fetchall()
 
-def db_get_tasks_by_user():
+def db_get_tasks_by_user(user):
     cur = get_db().cursor()
-    cur.execute("SELECT * FROM tasks")
+    cur.execute("SELECT * FROM tasks WHERE user = " + user)
     return cur.fetchall()
 
 if __name__ == "__main__":
@@ -38,8 +38,8 @@ if __name__ == "__main__":
     conn = sqlite3.connect(DATABASE)
     c = conn.cursor()
     c.execute("DROP TABLE IF EXISTS tasks")
-    c.execute("CREATE TABLE tasks (id integer primary key autoincrement, userid, title, description, timestamp, deadline, priority, effort, ordinality, complete)")
-    c.execute("INSERT INTO tasks (userid, title, description, timestamp, deadline, priority, effort, ordinality, complete) VALUES (0, 'buy milk', '', '9-28-13', '9-29-13', 1, 2, 0, 0)")
+    c.execute("CREATE TABLE tasks (id integer primary key autoincrement, user, title, description, timestamp, deadline, priority, effort, ordinality, complete)")
+    c.execute("INSERT INTO tasks (user, title, description, timestamp, deadline, priority, effort, ordinality, complete) VALUES (0, 'buy milk', '', '9-28-13', '9-29-13', 1, 2, 0, 0)")
     c.execute("SELECT * FROM tasks")
     print(c.fetchall())
     conn.commit()

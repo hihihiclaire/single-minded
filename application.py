@@ -2,7 +2,7 @@ import sqlite3
 import time
 from db import *
 from task import Task
-from flask import Flask, render_template, request, g
+from flask import Flask, render_template, request, g, session
 
 app = Flask(__name__)
 DATABASE = 'singleminded.db'
@@ -16,6 +16,12 @@ def close_connection(exception):
 @app.route("/")
 def index():
     tasklist = db_get_tasks()
+    print(tasklist)
+    return render_template('index.html', tasks=tasklist)
+
+@app.route("/<username>/")
+def index_of(username):
+    tasklist = db_get_tasks_by_user(username)
     print(tasklist)
     return render_template('index.html', tasks=tasklist)
 
